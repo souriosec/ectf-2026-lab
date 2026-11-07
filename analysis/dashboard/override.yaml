@@ -1,0 +1,29 @@
+services:
+  nginx:
+    image: defectdojo/defectdojo-nginx@sha256:023a169eb9c58d3d971ccf0e8ea123b703bad5430784410fb902737904efbd91
+    ports: !override
+      - "127.0.0.1:${DD_PORT:-8080}:8080"
+  initializer:
+    image: defectdojo/defectdojo-django@sha256:dbf54c0b46b15996095285c47d86768a61f889d39ad3a5d2341f13d7409a318e
+    environment:
+      DD_DEDUPLICATION_ALGORITHM_PER_PARSER: '{"Generic Findings Import": "unique_id_from_tool"}'
+      DD_HASHCODE_FIELDS_PER_SCANNER: '{"Generic Findings Import": ["unique_id_from_tool"]}'
+      DD_ADMIN_PASSWORD: ${DD_ADMIN_PASSWORD}
+      DD_ADMIN_MAIL: ${DD_ADMIN_MAIL}
+  uwsgi:
+    image: defectdojo/defectdojo-django@sha256:dbf54c0b46b15996095285c47d86768a61f889d39ad3a5d2341f13d7409a318e
+    environment:
+      DD_DEDUPLICATION_ALGORITHM_PER_PARSER: '{"Generic Findings Import": "unique_id_from_tool"}'
+      DD_HASHCODE_FIELDS_PER_SCANNER: '{"Generic Findings Import": ["unique_id_from_tool"]}'
+      DD_SESSION_COOKIE_SECURE: "False"
+      DD_CSRF_COOKIE_SECURE: "False"
+  celerybeat:
+    environment:
+      DD_DEDUPLICATION_ALGORITHM_PER_PARSER: '{"Generic Findings Import": "unique_id_from_tool"}'
+      DD_HASHCODE_FIELDS_PER_SCANNER: '{"Generic Findings Import": ["unique_id_from_tool"]}'
+    image: defectdojo/defectdojo-django@sha256:dbf54c0b46b15996095285c47d86768a61f889d39ad3a5d2341f13d7409a318e
+  celeryworker:
+    environment:
+      DD_DEDUPLICATION_ALGORITHM_PER_PARSER: '{"Generic Findings Import": "unique_id_from_tool"}'
+      DD_HASHCODE_FIELDS_PER_SCANNER: '{"Generic Findings Import": ["unique_id_from_tool"]}'
+    image: defectdojo/defectdojo-django@sha256:dbf54c0b46b15996095285c47d86768a61f889d39ad3a5d2341f13d7409a318e

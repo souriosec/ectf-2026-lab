@@ -1,0 +1,7 @@
+ARG TI_BASE=build-hsm:latest
+FROM ${TI_BASE}
+RUN apt-get update && apt-get install -y --no-install-recommends cppcheck clang-18 clang-tidy-18 llvm-18 python3-jsonschema ca-certificates && rm -rf /var/lib/apt/lists/*
+COPY scripts/ /lab/scripts/
+COPY config/ /lab/config/
+ENV PYTHONDONTWRITEBYTECODE=1
+ENTRYPOINT ["python3", "/lab/scripts/scan.py"]

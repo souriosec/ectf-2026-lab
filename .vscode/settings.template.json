@@ -1,0 +1,14 @@
+{
+  "clangd.path": "/usr/bin/clangd",
+  "clangd.arguments": [
+    "--background-index",
+    "--compile-commands-dir=@PROJECT@/.vscode",
+    "--query-driver=@PROJECT@/.vscode/toolchain/ti/bin/tiarmclang"
+  ],
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "cmake.configureOnOpen": false,
+  "files.associations": {
+    "*.h": "c"
+  },
+  "terminal.integrated.defaultProfile.linux": "bash"
+}

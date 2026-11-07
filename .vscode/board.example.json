@@ -1,0 +1,8 @@
+{
+  "pin": "123456",
+  "permissions": "1234=RWC",
+  "groups": "0x1234",
+  "port": "/dev/serial/by-id/REPLACE_WITH_YOUR_UART_DEVICE",
+  "probe": "REPLACE_WITH_YOUR_PROBE_SERIAL",
+  "openocd": "openocd"
+}

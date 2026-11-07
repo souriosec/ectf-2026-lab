@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "CTF: attach to installed firmware",
+      "type": "cortex-debug",
+      "request": "attach",
+      "servertype": "openocd",
+      "cwd": "${workspaceFolder}/firmware",
+      "executable": "${workspaceFolder}/build/hsm.elf",
+      "gdbPath": "/usr/bin/gdb-multiarch",
+      "armToolchainPath": "/usr/bin",
+      "serverpath": "@OPENOCD@",
+      "configFiles": [
+        "interface/xds110.cfg",
+        "target/ti/mspm0.cfg"
+      ],
+      "openOCDLaunchCommands": [
+        "adapter serial @PROBE@",
+        "adapter speed 2500"
+      ],
+      "debuggerArgs": [
+        "-nx"
+      ],
+      "postAttachCommands": [
+        "set substitute-path /hsm ${workspaceFolder}/firmware"
+      ]
+    }
+  ]
+}

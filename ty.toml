@@ -1,0 +1,8 @@
+[environment]
+python-version = "3.12"
+python-platform = "linux"
+extra-paths = ["analysis/stubs"]
+
+[src]
+respect-ignore-files = false
+include = [".vscode/ctf.py", "analysis/lab.py", "analysis/scripts", "analysis/tests", "analysis/stubs", "tools", "tests"]

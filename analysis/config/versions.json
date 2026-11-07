@@ -1,0 +1,9 @@
+{
+  "defectdojo_version": "3.5.0",
+  "defectdojo_commit": "fb92592dd5973da52793adc357df1d835f9d0a41",
+  "codex_cli_version": "0.167.0",
+  "dashboard_images": {
+    "django": "defectdojo/defectdojo-django@sha256:dbf54c0b46b15996095285c47d86768a61f889d39ad3a5d2341f13d7409a318e",
+    "nginx": "defectdojo/defectdojo-nginx@sha256:023a169eb9c58d3d971ccf0e8ea123b703bad5430784410fb902737904efbd91"
+  }
+}

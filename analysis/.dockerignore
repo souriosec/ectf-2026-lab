@@ -1,0 +1,9 @@
+*
+!images/
+!images/**
+!scripts/
+!scripts/**
+!config/
+!config/**
+**/__pycache__/
+**/*.pyc
